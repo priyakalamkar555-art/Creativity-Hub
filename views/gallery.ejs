@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+    <div class="logo">Creativity Hub </div>
+    <nav>
+        <a href="http://localhost:3000/creativity_hub#home" onclick="scrollToHome()">Home</a>
+        <a href="/creativity_hub/login"> Login </a>
+        <a href="/creativity_hub/upload">Upload</a>
+        <a href="http://localhost:3000/creativity_hub#about" onclick="scrollToAbout()">About</a>
+        
+    </nav>
+</header>
+     <h4>Creative Window</h4>
+    <div class="gallery">
+        <%uploadImage.forEach(img =>{%>
+        <div class="card">
+            <img src ="/uploads/<%=img.filename%>" alt="<%img.name%>"
+            onclick="openModal('/uploads/<%=img.filename%>')"
+            class="thumb"/>
+            <h3><%=img.name%></h3>
+            <p><%=img.thought%></p>
+        </div>
+        <%})%>
+    </div>
+    <div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">×</span>
+  <img id="modalImage" class="modal-content">
+
+  <div class="actions">
+    <button>❤️ Like</button>
+    <button>💬 Comment</button>
+    <button>🔗 Share</button>
+    <a id="downloadBtn" download>
+      <button>⬇ Download</button>
+    </a>
+  </div>
+</div>
+
+<script>
+  function openModal(imageSrc) {
+    document.getElementById("imageModal").style.display = "block";
+    document.getElementById("modalImage").src = imageSrc;
+    document.getElementById("downloadBtn").href = imageSrc;
+  }
+
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  } 
+</script>
+
+<footer style=" background-color: white; ">
+    <p style="font-weight: bold; text-align:center; justify-content: center; display: flex; align-items: center; padding: 15px 40px; position:sticky; top:0; z-index: 100;
+    box-shadow: 3px 3px 3px 3px rgb(240, 197, 211);">
+        Built with ❤️ by Creativity Hub 🌸
+        © 2026 Creativity Hub :)
+    </p>
+</footer>
+</body>
+</html>
