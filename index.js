@@ -26,7 +26,7 @@ app.use(
 // MongoDB Connection
 mongoose
   .connect('mongodb://127.0.0.1:27017/creativityHub')
-  .then(() => console.log('MongoDB Connected ✅'))
+  .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
 
@@ -69,7 +69,7 @@ app.post('/creativity_hub/signup', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    // ✅ Check if user already exists
+    // Check if user already exists
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
@@ -126,4 +126,5 @@ app.get('/gallery', (req,res) => {
 app.listen(3000, (req,res) => {
     console.log("Server Working");
 });
+
 
